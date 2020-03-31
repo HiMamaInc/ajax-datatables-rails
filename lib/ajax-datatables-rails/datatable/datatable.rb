@@ -68,6 +68,10 @@ module AjaxDatatablesRails
       end
 
       def get_param(param)
+        # @NOTE Bugfix that isn't yet in master.
+        # @SEE https://github.com/jbox-web/ajax-datatables-rails/pull/315/files
+        return {} if options[param].nil?
+
         if AjaxDatatablesRails.old_rails?
           options[param]
         else
